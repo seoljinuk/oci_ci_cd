@@ -1,6 +1,6 @@
 # image-springboot:latest 이라는 도커 이미지를 사용하여 cntr-springboot라는 컨테이너를 만들어 주세요.
 services:
-  springboot: #
+  springboot: ##
     image:  ugcadman/cicd-springboot:latest
     container_name: cntr-springboot
     ports:
