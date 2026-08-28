@@ -1,0 +1,19 @@
+# Dockerfile 시작
+FROM eclipse-temurin:21-jdk
+#FROM openjdk:21
+
+# Maven의 JAR 파일 위치 (target/*.jar) #
+ARG JAR_FILE=target/*.jar
+
+# JAR 파일을 컨테이너 내부로 복사합니다 .
+COPY ${JAR_FILE} app.jar
+
+# 컨테이너가 사용할 포트를 9000으로 지정
+EXPOSE 9000
+
+# 스프링 부트 애플리케이션 실행
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+# 한글이 안 보이는 문제
+ENV JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
+# Dockerfile 끝

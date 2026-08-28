@@ -1,0 +1,9 @@
+INSERT INTO products (name, price, description, image_url) VALUES
+('아메리카노', 4444, '진한 에스프레소에 뜨거운 물을 더한 기본 블랙 커피', '/images/americano01.png'),
+('브리오슈', 5555, '버터 풍미가 풍부하고 부드러운 식감의 프랑스식 달콤한 빵', '/images/brioche_02.png'),
+('카푸치노', 6666, '에스프레소에 따뜻한 우유와 풍부한 우유 거품을 더한 클래식 커피', '/images/cappuccino01.png'),
+('크로아상', 7777, '겹겹이 버터층이 살아 있는 바삭하고 고소한 프랑스식 페이스트리', '/images/croissant_01.png'),
+('치아바타', 8888, '겉은 바삭하고 속은 촉촉한 이탈리아 전통 빵으로 샌드위치에 잘 어울림', '/images/ciabatta_07.png'),
+('화이트 와인', 9999, '산뜻하고 과일향이 풍부한 화이트 와인', '/images/wine01.png');
+
+commit ;
