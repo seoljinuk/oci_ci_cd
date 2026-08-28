@@ -1,0 +1,29 @@
+name: Spring Boot CD #
+
+on:
+  workflow_run:
+    workflows: ["Spring Boot CI"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        host: [AD01_HOST, AD02_HOST]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets[matrix.host] }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.OCI_KEY }}
+          script: |
+            docker pull ${{ secrets.DOCKER_IMAGE }}:latest
+            docker stop springboot-app || true
+            docker rm springboot-app || true
+            docker run -d --name springboot-app -p 9000:9000 ${{ secrets.DOCKER_IMAGE }}:latest
